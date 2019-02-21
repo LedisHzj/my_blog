@@ -6,11 +6,21 @@
   </ul>
 <% end %>
 
-<%= simple_form_for @article do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :text %>
-  <%= f.button :submit %>
-<%end %>
+<div class="form-group">
+  <%= simple_form_for @article, wrapper: :horizontal_form do |f| %>
+    <div class="card-box">
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :text %>
+    </div>
 
-<%= link_to 'Back to articles list', articles_path%>
+    <div class="col-sm-offset-3 col-sm-9">
+      <%= f.button :submit %>
+      <%#= cancel_btn products_path %>
+      <%#= delete_btn @product %>
+    </div>
+
+  <%end %>
+
+  <%= link_to 'Back to articles list', articles_path%>
+</div>
