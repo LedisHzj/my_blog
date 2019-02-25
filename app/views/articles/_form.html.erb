@@ -1,10 +1,4 @@
-<% if @article.errors.any? %>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'shared/errors', obj: @article %>
 
 <div class="form-group">
   <%= simple_form_for @article, wrapper: :horizontal_form do |f| %>
@@ -12,15 +6,15 @@
       <%= f.input :title %>
       <%= f.input :description %>
       <%= f.input :text %>
-    </div>
 
-    <div class="col-sm-offset-3 col-sm-9">
-      <%= f.button :submit %>
-      <%#= cancel_btn products_path %>
-      <%#= delete_btn @product %>
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-9">
+        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= link_to 'Cancel and return to articles list', articles_path, class: "btn btn-warning" %>
+      </div>
+    </div>
     </div>
 
   <%end %>
 
-  <%= link_to 'Back to articles list', articles_path%>
 </div>
