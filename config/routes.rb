@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :articles
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 
   root 'pages#home'
   get 'about', to: 'pages#about'
