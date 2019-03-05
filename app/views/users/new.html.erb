@@ -1,0 +1,22 @@
+<h1 align="center">Sign Up For MyBlog</h1>
+
+<%= render 'shared/errors', obj: @user %>
+
+<div class="form-group">
+  <%= simple_form_for @user, wrapper: :horizontal_form do |f| %>
+    <div class="card-box">
+      <%= f.input :name, placeholder: "Enter name" %>
+      <%= f.input :email, placeholder: "Enter email" %>
+      <%= f.input :password, placeholder: "Enter password" %>
+
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-9">
+          <%= f.button :submit, "Sign Up", class: "btn btn-primary" %>
+          <%#= link_to 'Cancel and return to articles list', articles_path, class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
+
+  <%end %>
+
+</div>
