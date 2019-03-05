@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
   resources :articles
 
-  devise_for :users, controllers: { sessions: 'users/sessions',
-                                              devise: 'users/devise',
-                                              passwords: 'users/passwords',
-                                              unlocks: 'users/unlocks',
-                                              registrations: 'users/registrations'}
+  devise_for :auth, controllers: {sessions: 'auth/sessions',
+                                    passwords: 'auth/passwords',
+                                    unlocks: 'auth/unlocks',
+                                    registrations: 'auth/registrations'}
 
-  resources :users, except:[:new]
+  resources :users
 
   root 'pages#home'
   get 'about', to: 'pages#about'
-  get 'signup', to: 'users#new'
-  # #For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
