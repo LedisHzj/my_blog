@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   resources :articles
 
-  devise_for :auth, controllers: {sessions: 'auth/sessions',
-                                    passwords: 'auth/passwords',
-                                    unlocks: 'auth/unlocks',
-                                    registrations: 'auth/registrations'}
+  devise_for :users, path_prefix: 'auth', controllers: {sessions: 'users/sessions',
+                                    passwords: 'users/passwords',
+                                    unlocks: 'users/unlocks',
+                                    registrations: 'users/registrations'}
+
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+  end
 
   resources :users
+  get 'sign_up', to: 'users#new', as: 'sign_up'
 
   root 'pages#home'
   get 'about', to: 'pages#about'
