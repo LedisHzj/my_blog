@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
+  load_and_authorize_resource :article,  except:[:index, :show]
   before_action :set_article, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!, except:[:index, :show]
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 3)
@@ -14,7 +16,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = current_user
     if @article.save
       flash[:success] = "Article was successfully created!"
       redirect_to article_path(@article)
