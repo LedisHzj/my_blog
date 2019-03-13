@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   validates_presence_of :role
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   def role? role
     self.role == role.to_s && Roles.keys.index(role)
