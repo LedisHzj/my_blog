@@ -17,6 +17,9 @@
   <%= simple_format(@article.description) %>
   <h4 class="center text"><strong>Text:</strong></h4>
   <hr>
+  <% if @article.categories.any? %>
+    <p>Categories: <%= render @article.categories %></p>
+  <% end %>
   <%= simple_format(@article.text) %>
   <div class="article-actions">
     <% if user_signed_in? && (current_user == @article.user || current_user.role?(:admin)) %>

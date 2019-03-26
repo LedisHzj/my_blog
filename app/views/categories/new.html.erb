@@ -1,0 +1,22 @@
+<h1 align="center">Create New Category</h1>
+
+<%= render 'shared/errors', obj: @category %>
+
+<div class="form-group">
+  <%= simple_form_for @category, wrapper: :horizontal_form do |f| %>
+    <div class="card-box">
+      <%= f.input :name, placeholder: "Enter name" %>
+
+
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-9">
+          <%= f.button :submit, class: "btn btn-primary" %>
+          <%= link_to 'Delete', @category, method: :delete, class: 'btn btn-danger' unless @category.new_record?%>
+          <%= link_to 'Cancel and return to articles list', articles_path, class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
+
+  <%end %>
+
+</div>

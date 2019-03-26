@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :articles
 
   devise_for :users, path_prefix: 'auth', controllers: {sessions: 'users/sessions',

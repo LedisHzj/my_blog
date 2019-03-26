@@ -5,4 +5,5 @@ class Article < ApplicationRecord
   validates :text, length: {minimum: 20}
 
   belongs_to :user
+  has_and_belongs_to_many :categories
 end

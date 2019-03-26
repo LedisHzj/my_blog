@@ -6,7 +6,11 @@
       <%= f.input :title %>
       <%= f.input :description %>
       <%= f.input :text %>
-
+      <div class="row ">
+        <div class="col-sm-offset-3 col-sm-8">
+          <%= f.association  :categories,  as: :check_boxes %>
+        </div>
+      </div>
     <div class="row">
       <div class="col-sm-offset-3 col-sm-9">
         <%= f.button :submit, class: "btn btn-primary" %>
